@@ -1,0 +1,29 @@
+# Rust specific ignores
+target/
+**/*.rs.bk
+**/*.rs.orig
+**/*.rs.rej
+
+# Temporary files
+*.rs.bk
+*.rs.bk.*
+*.swp
+*.swo
+*.swn
+
+# IDE specific ignores
+.idea/
+.vscode/
+*.iml
+
+# Git specific ignores
+.DS_Store
+*.log
+node_modules/
+*.lock
+*.lock.*
+*.lock-*
+
+# Build artifacts
+target/
+Cargo.lock
