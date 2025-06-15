@@ -28,7 +28,7 @@ build-and-publish-to-crates-io:
   tags:
     - build
   script:
-    - echo "Aktualisiere Cargo.toml Version zu $CI_COMMIT_TAG"
+    - echo "Update Cargo.toml version to $CI_COMMIT_TAG"
     - sed -i "s/^version = \".*\"/version = \"$CI_COMMIT_TAG\"/" Cargo.toml
     - cat Cargo.toml
     - cargo build --release
