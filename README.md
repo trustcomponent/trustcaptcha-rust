@@ -50,7 +50,7 @@ let verification_result = match CaptchaManager::get_verification_result("<your_s
 
 3. Act on the result
 ```rust
-// Do something with the verification result
+// Act on the verification result
 if !verification_result.verification_passed || verification_result.score > 0.5 {
     info!("Verification failed or bot score > 0.5 – possible automated request.");
 }
