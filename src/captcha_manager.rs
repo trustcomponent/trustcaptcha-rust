@@ -5,8 +5,9 @@ use crate::errors::{
 use crate::model::verification_result::VerificationResult;
 use crate::model::verification_token::VerificationToken;
 use base64::{engine::general_purpose, Engine as _};
-use reqwest::Client;
+use reqwest::{redirect::Policy, Client};
 use std::error::Error;
+use std::time::Duration;
 
 pub struct CaptchaManager;
 
@@ -37,10 +38,16 @@ impl CaptchaManager {
         secret_key: &str,
     ) -> Result<VerificationResult, Box<dyn Error>> {
         let url = format!(
-            "{}/verifications/{}/assessments",
-            verification_token.api_endpoint, verification_token.verification_id
+            "https://api.trustcomponent.com/verifications/{}/assessments",
+            verification_token.verification_id
         );
-        let client = Client::new();
+
+        let client = Client::builder()
+            .redirect(Policy::none())
+            .connect_timeout(Duration::from_secs(3))
+            .timeout(Duration::from_secs(5))
+            .build()?;
+
         let response = client
             .get(&url)
             .header("tc-authorization", secret_key)
@@ -50,10 +57,7 @@ impl CaptchaManager {
             .await?;
 
         match response.status().as_u16() {
-            200 => {
-                let verification_result: VerificationResult = response.json().await?;
-                Ok(verification_result)
-            }
+            200 => Ok(response.json::<VerificationResult>().await?),
             403 => Err(Box::new(SecretKeyInvalidError)),
             404 => Err(Box::new(VerificationNotFoundError)),
             423 => Err(Box::new(VerificationNotFinishedError)),
