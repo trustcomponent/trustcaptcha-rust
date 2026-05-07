@@ -32,13 +32,16 @@ Need a walkthrough? See the [Rust integration guide](https://www.trustcomponent.
 
 1. Install the dependency
 ```bash
-cargo add trustcaptcha-rust
+cargo add trustcaptcha@^3.0
 ```
 
 2. Retrieve the verification result
 ```rust
+use trustcaptcha::trust_captcha::TrustCaptcha;
+
 // Retrieving the verification result
-let verification_result = match CaptchaManager::get_verification_result("<your_secret_key>", "<verification_token_from_your_client>").await {
+let trust_captcha = TrustCaptcha::builder("<your_api_key>").build()?;
+let verification_result = match trust_captcha.get_verification_result("<verification_token_from_your_client>").await {
     Ok(result) => result,
     Err(e) => {
         // Fetch verification result failed - handle error

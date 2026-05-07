@@ -9,16 +9,33 @@ pub struct VerificationResult {
     #[serde(rename = "verificationId")]
     pub verification_id: Uuid,
 
+    #[serde(rename = "verificationPassed")]
+    pub verification_passed: bool,
+
     pub score: f64,
 
-    pub reason: String,
+    #[serde(rename = "decisionType")]
+    pub decision_type: String,
 
-    pub mode: String,
+    #[serde(rename = "decisionAction")]
+    pub decision_action: String,
+
+    #[serde(rename = "gatewayFailoverActive")]
+    pub gateway_failover_active: bool,
+
+    #[serde(rename = "riskScoringEnabled")]
+    pub risk_scoring_enabled: bool,
+
+    #[serde(rename = "minimalDataModeEnabled")]
+    pub minimal_data_mode_enabled: bool,
 
     pub origin: String,
 
     #[serde(rename = "ipAddress")]
     pub ip_address: String,
+
+    #[serde(rename = "countryCode")]
+    pub country_code: String,
 
     #[serde(rename = "deviceFamily")]
     pub device_family: String,
@@ -28,15 +45,18 @@ pub struct VerificationResult {
 
     pub browser: String,
 
-    #[serde(rename = "creationTimestamp")]
-    pub creation_timestamp: String,
+    #[serde(rename = "verificationStartedAt")]
+    pub verification_started_at: String,
 
-    #[serde(rename = "releaseTimestamp")]
-    pub release_timestamp: String,
+    #[serde(rename = "verificationFinishedAt")]
+    pub verification_finished_at: String,
 
-    #[serde(rename = "retrievalTimestamp")]
-    pub retrieval_timestamp: String,
+    #[serde(rename = "resultExpiresAt")]
+    pub result_expires_at: String,
 
-    #[serde(rename = "verificationPassed")]
-    pub verification_passed: bool,
+    #[serde(rename = "resultFirstFetchedAt")]
+    pub result_first_fetched_at: String,
+
+    #[serde(rename = "resultLastFetchedAt")]
+    pub result_last_fetched_at: String,
 }
