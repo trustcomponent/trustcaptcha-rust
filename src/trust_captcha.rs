@@ -1,8 +1,7 @@
 use crate::errors::{
-    ApiKeyInvalidError, ClientReportedServerUnreachableError, ServerUnreachableError,
-    UnknownError, VerificationNotFinishedError, VerificationNotFoundError,
-    VerificationResultExpiredError, VerificationResultRetrievalLimitReachedError,
-    VerificationTokenInvalidError,
+    ApiKeyInvalidError, ClientReportedServerUnreachableError, ServerUnreachableError, UnknownError,
+    VerificationNotFinishedError, VerificationNotFoundError, VerificationResultExpiredError,
+    VerificationResultRetrievalLimitReachedError, VerificationTokenInvalidError,
 };
 use crate::model::verification_result::VerificationResult;
 use crate::model::verification_token::VerificationToken;

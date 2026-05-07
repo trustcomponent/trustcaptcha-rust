@@ -6,7 +6,10 @@ pub struct VerificationTokenInvalidError;
 
 impl fmt::Display for VerificationTokenInvalidError {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        write!(f, "The verification token is malformed or could not be parsed.")
+        write!(
+            f,
+            "The verification token is malformed or could not be parsed."
+        )
     }
 }
 
@@ -17,7 +20,10 @@ pub struct VerificationNotFoundError;
 
 impl fmt::Display for VerificationNotFoundError {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        write!(f, "No verification could be found for the given verification token.")
+        write!(
+            f,
+            "No verification could be found for the given verification token."
+        )
     }
 }
 
@@ -50,7 +56,10 @@ pub struct VerificationResultExpiredError;
 
 impl fmt::Display for VerificationResultExpiredError {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        write!(f, "The verification result has expired and can no longer be retrieved.")
+        write!(
+            f,
+            "The verification result has expired and can no longer be retrieved."
+        )
     }
 }
 
