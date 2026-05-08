@@ -92,7 +92,7 @@ pub struct ServerUnreachableError;
 
 impl fmt::Display for ServerUnreachableError {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        write!(f, "Could not reach the TrustCaptcha server. This is a high-trust failover signal — your backend was unable to contact our servers.")
+        write!(f, "Could not reach the TrustCaptcha server. Please check your network connection and consider implementing a failover mechanism.")
     }
 }
 

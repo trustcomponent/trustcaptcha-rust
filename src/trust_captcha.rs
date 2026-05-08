@@ -55,11 +55,12 @@ impl TrustCaptchaBuilder {
     }
 
     pub fn build(self) -> Result<TrustCaptcha, Box<dyn Error>> {
-        if self.api_key.is_empty() {
+        let api_key = self.api_key.trim().to_string();
+        if api_key.is_empty() {
             return Err("api_key must not be empty".into());
         }
         Ok(TrustCaptcha {
-            api_key: self.api_key,
+            api_key,
             api_host: self.api_host,
             connect_timeout: self.connect_timeout,
             read_timeout: self.read_timeout,
